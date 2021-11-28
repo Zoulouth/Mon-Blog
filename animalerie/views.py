@@ -9,7 +9,7 @@ from .models import Animal
 def post_list(request):
     equipements = Equipement.objects.all()
     animals = Animal.objects.all()
-    return render(request, 'blog/post_list.html', {"animals": animals, "équimements":equipements})
+    return render(request, 'animalerie/post_list.html', {"animals": animals, "équimements":equipements})
 
 def aller_mangeoire(animal, ancien_lieu, nouveau_lieu):
     if animal.etat == "affamé":
@@ -110,5 +110,5 @@ def animal_detail(request, id_animal):
         lieu = get_object_or_404(Equipement, id_equip=animal.lieu.id_equip)
         form = MoveForm()
         return render(request,
-                  'blog/animal_detail.html',
+                  'animalerie/animal_detail.html',
                   {'animal': animal, 'lieu': lieu, 'form': form})
